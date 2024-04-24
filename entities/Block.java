@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.Date;
 
 import Utils.StringUtil;
@@ -10,7 +12,7 @@ public class Block {
     private long timeStamp; // as number of milliseconds since 1/1/1970.
     private int nonce;
 
-    // Block Constructor.
+    // entities.Block Constructor.
     public Block(String data, String previousHash) {
         this.data = data;
         this.previousHash = previousHash;
@@ -38,6 +40,6 @@ public class Block {
             nonce ++;
             hash = calculateHash();
         }
-        System.out.println("Block Mined!!! : " + hash);
+        System.out.println("entities.Block Mined!!! : " + hash);
     }
 }
