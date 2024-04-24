@@ -18,12 +18,26 @@ public class Block {
         this.hash = calculateHash(); // Making sure we do this after we set the other values.
     }
 
-    // Calculate new hash based on blocks contents
+    //Calculate new hash based on blocks contents
     public String calculateHash() {
         return StringUtil.applySha256(
                 previousHash +
                         Long.toString(timeStamp) +
                         Integer.toString(nonce) +
-                        data);
+                        data
+        );
+    }
+
+    public void mineBlock(int difficulty) {
+        //Create a string with difficulty * "0"
+        String target = new String(new char[difficulty]).replace('\0', '0');
+
+        // Keep mining until the hash is equal to the target.
+        while(!hash.substring( 0, difficulty).equals(target)) {
+            //Increases nonce value until hash target is reached.
+            nonce ++;
+            hash = calculateHash();
+        }
+        System.out.println("Block Mined!!! : " + hash);
     }
 }

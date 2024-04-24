@@ -1,18 +1,32 @@
 import java.util.ArrayList;
 import java.util.List;
+
 import com.google.gson.GsonBuilder;
 
 public class BasicChain {
 
-    public static ArrayList<Block> blockchain = new ArrayList<Block>();
+    public static List<Block> blockchain = new ArrayList<>();
+    public static int difficulty = 1;
 
     public static void main(String[] args) {
         //add our blocks to the blockchain ArrayList:
-        blockchain.add(new Block("Hi im the first block", "0"));
-        blockchain.add(new Block("Yo im the second block",blockchain.get(blockchain.size()-1).hash));
-        blockchain.add(new Block("Hey im the third block",blockchain.get(blockchain.size()-1).hash));
+
+        blockchain.add(new Block("Hello! im the first block", "0"));
+        System.out.println("Trying to Mine block 1... ");
+        blockchain.get(0).mineBlock(difficulty);
+
+        blockchain.add(new Block("Yo! im the second block",blockchain.get(blockchain.size()-1).hash));
+        System.out.println("Trying to Mine block 2... ");
+        blockchain.get(1).mineBlock(difficulty);
+
+        blockchain.add(new Block("Hey! im the third block",blockchain.get(blockchain.size()-1).hash));
+        System.out.println("Trying to Mine block 3... ");
+        blockchain.get(2).mineBlock(difficulty);
+
+        System.out.println("\nBlockchain is Valid: " + isChainValid());
 
         String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
+        System.out.println("\nThe block chain: ");
         System.out.println(blockchainJson);
     }
 
