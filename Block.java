@@ -18,6 +18,7 @@ public class Block {
         this.hash = calculateHash(); // Making sure we do this after we set the other values.
     }
 
+    // Calculate new hash based on blocks contents
     public String calculateHash() {
         return StringUtil.applySha256(
                 previousHash +
