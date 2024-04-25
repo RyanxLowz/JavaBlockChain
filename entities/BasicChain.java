@@ -2,7 +2,9 @@ package entities;
 
 import java.security.Security;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.GsonBuilder;
 import entities.utils.StringUtil;
@@ -11,7 +13,9 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 public class BasicChain {
 
     public static List<Block> blockchain = new ArrayList<>();
+    public static Map<String, TransactionOutput> UTXOs = new HashMap<>(); //list of all unspent transactions.
     public static int difficulty = 5;
+    public static float minimumTransaction = 0.1f;
     public static Wallet walletA;
     public static Wallet walletB;
 
