@@ -2,7 +2,7 @@ package entities;
 
 import java.util.Date;
 
-import Utils.StringUtil;
+import entities.utils.StringUtil;
 
 public class Block {
 
